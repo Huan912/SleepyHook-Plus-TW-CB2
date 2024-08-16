@@ -64,6 +64,12 @@ void GamePatcher() {
 	MH_InlineHook((void*)(dwHardWare + 0x248070), GameGuard::GetStateCode, (void*&)GameGuard::oGetStateCode);
 	WriteBytes((void*)(dwHardWare + 0xDA544), (void*)"\xEB", 1);
 
+	//Disable SSL Certificate Init
+	WriteBytes((void*)(dwHardWare + 0x244297), (void*)"\x90\x90\x90\x90\x90", 5);
+	WriteBytes((void*)(dwHardWare + 0x2429E9), (void*)"\x90\x90\x90\x90\x90\x90\x90\xEB", 8);
+
+
+
 	//Patch SharedDict Check
 	//MH_InlineHook((void*)(dwHardWare + 0xC0D0D8), HookFuncs::SharedDictCheck_Hook, (void*&)HookFuncs::oSharedDictCheck);
 }
