@@ -69,8 +69,8 @@ void FillGameSharedMemroy()
 	LauncherParam ArrayInfo[] = {
 		{ "launched", "1" },
 		{ "mode", "" },
-		//{ "passport", "" }, //This prevents us from needing to Hook AuthManager.
-		{ "region", "0" },
+		//{ "passport", "username@password" }, //This prevents us from needing to Hook AuthManager.
+		{ "region", "3" },
 		{ "type", "0" },
 	};
 
@@ -193,7 +193,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		{
 			FillGameSharedMemroy();
 			hEngine = Sys_LoadModule(pszEngineDLL);
-			//MessageBoxA(NULL, "Please set BP at ret code of MessageBoxA API", "", MB_OK); // if you want to debug the game, you can set a breakpoint here
+			MessageBoxA(NULL, "Please set BP at ret code of MessageBoxA API", "", MB_OK); // if you want to debug the game, you can set a breakpoint here
 			if (!hEngine)
 			{
 				static char msg[512];
