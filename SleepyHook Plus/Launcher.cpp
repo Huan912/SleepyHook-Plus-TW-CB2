@@ -57,9 +57,13 @@ void SetValue(LPVOID Info, int& Index, int Size, ULONG* Value) {
 
 void FillGameSharedMemroy()
 {
-	HANDLE hFile = CreateFileMappingA(NULL, NULL, PAGE_READWRITE, NULL, 32768, "CSO.SharedDict");
-	if (!hFile)
-		return;
+	HANDLE hFile = NULL;
+	hFile = OpenFileMappingA(FILE_MAP_ALL_ACCESS, FALSE, "CSO.SharedDict");
+	if (!hFile) {
+		hFile = CreateFileMappingA(NULL, NULL, PAGE_READWRITE, NULL, 32768, "CSO.SharedDict");
+		if (!hFile)
+			return;
+	}
 	LPVOID lpMemInfo = MapViewOfFile(hFile, SECTION_MAP_EXECUTE | FILE_MAP_ALL_ACCESS, 0, 0, 0);
 	if (!lpMemInfo) {
 		CloseHandle(hFile);
