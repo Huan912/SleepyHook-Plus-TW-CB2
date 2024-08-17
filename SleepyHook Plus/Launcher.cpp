@@ -68,10 +68,9 @@ void FillGameSharedMemroy()
 
 	LauncherParam ArrayInfo[] = {
 		{ "launched", "1" },
-		{ "mode", "" },
-		//{ "passport", "username@password" }, //This prevents us from needing to Hook AuthManager.
-		{ "region", "3" },
 		{ "type", "0" },
+		{ "region", "3" },
+		//{ "passport", "" }, //When using passport, it will call NMCO stuff, so let's not use it...
 	};
 
 	ULONG	Number = sizeof(ArrayInfo) / sizeof(LauncherParam);;
