@@ -174,7 +174,7 @@ void MH_LoadEngine(HMODULE hModule)
 		g_hEngineModule = GetModuleHandle(NULL);
 		g_bEngineIsBlob = TRUE;
 	}
-	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)GamePatcher, 0, 0, 0);
+	GamePatcher();
 }
 
 void MH_ExitGame(int iResult)
