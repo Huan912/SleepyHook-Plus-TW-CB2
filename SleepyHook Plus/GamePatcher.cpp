@@ -69,6 +69,7 @@ void GamePatcher() {
 		//Disable SSL Certificate Init
 		WriteBytes((void*)(dwHardWare + 0x244297), (void*)"\x90\x90\x90\x90\x90", 5);
 		WriteBytes((void*)(dwHardWare + 0x2429E9), (void*)"\x90\x90\x90\x90\x90\x90\x90\xEB", 8);
+		WriteBytes((void*)(dwHardWare + 0x2429D9), (void*)"\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x8B\x4E\x04\x90\x90\x90", 16); //Disable SSL Connect Log write
 	}
 
 
